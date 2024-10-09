@@ -2,10 +2,11 @@ package Animals;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Objects;
 
-public abstract class Animal {
+public abstract class Animal implements Comparable <Animal> {
     protected final String name;
     protected final LocalDate dateBirth;
     protected String type;
@@ -50,13 +51,7 @@ public abstract class Animal {
         return count;
     }
 
-    @Override
-    public String toString() {
-        return "Имя: " + name +
-                ", дата рождения: " + dateBirth +
-                ", тип " + type +
-                ", список комманд: " + commands;
-    }
+
 
 
     @Override
@@ -70,5 +65,19 @@ public abstract class Animal {
     @Override
     public int hashCode() {
         return Objects.hash(name, dateBirth, type);
+    }
+
+    @Override
+    public int compareTo(Animal animal) {
+        return this.dateBirth.compareTo(animal.dateBirth);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Имя: " + name +
+                ", дата рождения: " + dateBirth +
+                ", тип " + type +
+                ", список комманд: " + commands;
     }
 }

@@ -4,6 +4,7 @@ import Animals.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -59,9 +60,19 @@ public class Main {
         ArrayList commandCat = new ArrayList<>();
         commandCat.add("Сидеть");
         Cat cat4 = new Cat("Tom", LocalDate.of(1991, 10, 15), commandCat, 3);
+        Horse horse1 = new Horse("Iva");
+        Donkey donkey = new Donkey("Vi", LocalDate.of(2001,01,01), true);
+        Donkey donkey2 = new Donkey("Vi", LocalDate.of(2056,01,01), true);
+
+
         listAnimalRegistry.addNewAnimal(cat4);
-        listAnimalRegistry.learnNewCommand(cat4, "Бежать!");
-        listAnimalRegistry.learnNewCommand(cat4, "Бежать!");
+        listAnimalRegistry.addNewAnimal(horse1);
+        listAnimalRegistry.addNewAnimal(donkey);
+        listAnimalRegistry.addNewAnimal(donkey2);
+//        listAnimalRegistry.learnNewCommand(cat4, "Бежать!");
+//        listAnimalRegistry.learnNewCommand(cat4, "Бежать!");
+        Collections.sort(listAnimalRegistry.getAnimalRegistry());
+        System.out.println(listAnimalRegistry.getAnimalRegistry());
 
 
 
