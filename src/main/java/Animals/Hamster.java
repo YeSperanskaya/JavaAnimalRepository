@@ -19,7 +19,7 @@ public class Hamster extends Pets{
     public Hamster(String name, LocalDate dateBirth, ArrayList<String> commands, int size) {
         super(name, dateBirth, commands);
         this.size = size;
-        super.type = "dog";
+        super.type = "Хомяк";
         countHamster++;
     }
 
@@ -29,6 +29,6 @@ public class Hamster extends Pets{
 
     @Override
     public String toString() {
-        return super.toString() + " Размер: " + size + "см.";
+        return super.toString() + ", Размер: " + size + "см.";
     }
 }

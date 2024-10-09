@@ -2,6 +2,7 @@ package Animals;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Horse extends PackAnimal{
     private int maxWeightRider;
@@ -17,6 +18,7 @@ public class Horse extends PackAnimal{
     public Horse(String name, LocalDate dateBirth, ArrayList<String> commands, int maxWeightRider) {
         super(name, dateBirth, commands);
         this.maxWeightRider = maxWeightRider;
+        super.type = "Лошадь";
         countHorse++;
     }
 
@@ -26,6 +28,8 @@ public class Horse extends PackAnimal{
 
     @Override
     public String toString() {
-        return "Максимальный вес седока равен: " + maxWeightRider +'.';
+        return super.toString() + ", Максимальный вес седока равен: " + maxWeightRider +'.';
     }
+
+
 }

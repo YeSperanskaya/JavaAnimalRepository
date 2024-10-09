@@ -26,7 +26,7 @@ public class Cat extends Pets{
     }
     public Cat(String name, LocalDate dateBirth, ArrayList<String> commands, int numberOfMiceCaught) {
         super(name, dateBirth, commands);
-        super.type = "cat";
+        super.type = "Кот";
         this.numberOfMiceCaught = numberOfMiceCaught;
         countCat++;
     }

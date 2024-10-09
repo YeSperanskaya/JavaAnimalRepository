@@ -19,7 +19,7 @@ public class Dog extends Pets{
     public Dog(String name, LocalDate dateBirth, ArrayList<String> commands, boolean isHunter) {
         super(name, dateBirth, commands);
         this.isHunter = isHunter;
-        super.type = "dog";
+        super.type = "Собака";
         countDog++;
     }
 
@@ -29,6 +29,6 @@ public class Dog extends Pets{
 
     @Override
     public String toString() {
-        return super.toString() + " Является охотничьей: " + isHunter;
+        return super.toString() + ", Является охотничьей: " + isHunter;
     }
 }

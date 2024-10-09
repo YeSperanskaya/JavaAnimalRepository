@@ -3,6 +3,7 @@ package Animals;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public abstract class Animal {
     protected final String name;
@@ -47,5 +48,19 @@ public abstract class Animal {
                 ", дата рождения: " + dateBirth +
                 ", тип " + type +
                 ", список комманд: " + commands;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return Objects.equals(name, animal.name) && Objects.equals(dateBirth, animal.dateBirth) && Objects.equals(type, animal.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, dateBirth, type);
     }
 }
