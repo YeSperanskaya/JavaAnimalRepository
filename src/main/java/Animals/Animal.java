@@ -35,7 +35,15 @@ public abstract class Animal {
     }
 
     public void learnNewCommand(String command) {
-        commands.add(command);
+        if (isExistComand(command)) {
+            System.out.println("Команда уже известна!");
+        } else {
+            commands.add(command);
+            System.out.println("Теперь известна новая команда: " + command);
+        }
+    }
+    private boolean isExistComand(String command) {
+        return commands.contains(command);
     }
 
     public static int getCount() {

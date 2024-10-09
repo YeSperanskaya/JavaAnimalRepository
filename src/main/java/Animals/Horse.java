@@ -28,7 +28,7 @@ public class Horse extends PackAnimal{
 
     @Override
     public String toString() {
-        return super.toString() + ", Максимальный вес седока равен: " + maxWeightRider +'.';
+        return super.toString() + ", Максимальный вес седока равен: " + maxWeightRider +'.' + '\n';
     }
 
 

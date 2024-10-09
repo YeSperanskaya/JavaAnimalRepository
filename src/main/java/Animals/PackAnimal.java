@@ -7,11 +7,12 @@ public abstract class PackAnimal extends Animal{
 
     private static int countPackAnimal;
     public PackAnimal(String name) {
-        super(name);
+
+        this(name, LocalDate.now());
     }
 
     public PackAnimal(String name, LocalDate dateBirth) {
-        super(name, dateBirth);
+        this(name, dateBirth, new ArrayList<>());
     }
 
     public PackAnimal(String name, LocalDate dateBirth, ArrayList<String> commands) {

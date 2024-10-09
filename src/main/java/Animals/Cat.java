@@ -37,6 +37,6 @@ public class Cat extends Pets{
 
     @Override
     public String toString() {
-        return super.toString() + ", количество пойманных мышей: " + numberOfMiceCaught;
+        return super.toString() + ", количество пойманных мышей: " + numberOfMiceCaught  + '\n';
     }
 }

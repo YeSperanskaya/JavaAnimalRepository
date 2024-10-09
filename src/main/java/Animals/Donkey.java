@@ -26,6 +26,6 @@ public class Donkey extends PackAnimal{
 
     @Override
     public String toString() {
-        return super.toString() + ", Является говорящим: " + isSpeaker;
+        return super.toString() + ", Является говорящим: " + isSpeaker + '\n';
     }
 }

@@ -29,6 +29,6 @@ public class Hamster extends Pets{
 
     @Override
     public String toString() {
-        return super.toString() + ", Размер: " + size + "см.";
+        return super.toString() + ", Размер: " + size + "см." + '\n';
     }
 }

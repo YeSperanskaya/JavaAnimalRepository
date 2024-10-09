@@ -25,6 +25,6 @@ public class Camel extends PackAnimal{
 
     @Override
     public String toString() {
-        return super.toString() + ", Количество горбов: " + numberOfHumps;
+        return super.toString() + ", Количество горбов: " + numberOfHumps + '\n';
     }
 }

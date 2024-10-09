@@ -29,6 +29,6 @@ public class Dog extends Pets{
 
     @Override
     public String toString() {
-        return super.toString() + ", Является охотничьей: " + isHunter;
+        return super.toString() + ", Является охотничьей: " + isHunter  + '\n';
     }
 }
