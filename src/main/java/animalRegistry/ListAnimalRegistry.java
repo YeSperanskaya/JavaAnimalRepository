@@ -1,8 +1,10 @@
 package animalRegistry;
 
 import Animals.Animal;
+import com.sun.source.tree.BreakTree;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class ListAnimalRegistry {
     private ArrayList<Animal> animalRegistry;
