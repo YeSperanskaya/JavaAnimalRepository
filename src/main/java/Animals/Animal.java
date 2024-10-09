@@ -52,8 +52,6 @@ public abstract class Animal implements Comparable <Animal> {
     }
 
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
