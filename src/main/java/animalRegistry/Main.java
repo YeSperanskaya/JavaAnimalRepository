@@ -43,15 +43,7 @@ public class Main {
 //        listAnimalRegistry.addNewAnimal(cat6);
 //        System.out.println(listAnimalRegistry);
 //
-//        System.out.println("Количество животных: " + Animal.getCount());
-//        System.out.println("Количество домашних животных: " + Pets.getCountPets());
-//        System.out.println("Количество ездовых животных: " + PackAnimal.getCountPackAnimal());
-//        System.out.println("Количество кошек: " + Cat.getCountCat());
-//        System.out.println("Количество собак: " + Dog.getCountDog());
-//        System.out.println("Количество хомяков: " + Hamster.getCountHamster());
-//        System.out.println("Количество лошадей: " + Horse.getCountHorse());
-//        System.out.println("Количество верблюдов: " + Camel.getCountCamel());
-//        System.out.println("Количество ослов: " + Donkey.getCountDonkey());
+
 
 
 
@@ -75,8 +67,16 @@ public class Main {
         System.out.println(listAnimalRegistry.getAnimalRegistry());
 
 
-
-
+        System.out.println();
+        System.out.println("Количество животных: " + Animal.getCount());
+        System.out.println("Количество домашних животных: " + Pets.getCountPets());
+        System.out.println("Количество ездовых животных: " + PackAnimal.getCountPackAnimal());
+        System.out.println("Количество кошек: " + Cat.getCountCat());
+        System.out.println("Количество собак: " + Dog.getCountDog());
+        System.out.println("Количество хомяков: " + Hamster.getCountHamster());
+        System.out.println("Количество лошадей: " + Horse.getCountHorse());
+        System.out.println("Количество верблюдов: " + Camel.getCountCamel());
+        System.out.println("Количество ослов: " + Donkey.getCountDonkey());
 
     }
 }
