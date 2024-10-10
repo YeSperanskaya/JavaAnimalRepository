@@ -4,8 +4,6 @@ import Animals.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleMenu {
@@ -20,11 +18,11 @@ public class ConsoleMenu {
     public void start() {
         System.out.println("Добрый день! Введите ваше имя:");
         String name = scanner.nextLine();
-        System.out.println("Добро пожаловать в программу 'Реестр животных'" + name + "!");
+        System.out.println("Добро пожаловать в программу 'Реестр животных' " + name + "!");
         boolean isWorkingRegistr = true;
         String command;
+        information();
         while (isWorkingRegistr) {
-            information();
             command = scanner.nextLine();
             switch (command) {
                 case "create cat" -> createAnimal("cat");
@@ -36,13 +34,12 @@ public class ConsoleMenu {
                 case "stat" -> statistic();
                 case "help" -> information();
                 case "exit" -> isWorkingRegistr = false;
-                default -> System.out.println("Вы ввели неверную команду!");
-
-
+                case "list" -> System.out.println(getListAnimalRegistry());
+                case "learn" -> learn();
+                default -> information();
             }
-
         }
-        System.out.println("Выполнение программы окончено, спасибо, что воспользовались нашей программой " + name + "!");
+        System.out.println("Выполнение программы окончено, спасибо, что воспользовались нашей программой, " + name + "!");
     }
 
 
@@ -50,19 +47,21 @@ public class ConsoleMenu {
         System.out.println("Доступные программы:");
         System.out.println("Cоздать животное - \"create cat\" (dog, hamster, horse, donkey, camel)");
         System.out.println("Статистика по всем животным - \"stat\"");
+        System.out.println("list - список всех животных");
+        System.out.println("exit - выход");
     }
 
 
     private void createAnimal(String typeAnimal) {
         System.out.println("Введите имя животного:");
         String name = scanner.nextLine();
-        LocalDate  localDate = createDateBirth();
+        LocalDate localDate = createDateBirth();
 //        ArrayList command = createCommands();
         switch (typeAnimal) {
             case "cat":
                 System.out.println("Введите количество мышей, которое поймала кошка:");
                 int numberOfMiceCaught = scanner.nextInt();
-                listAnimalRegistry.addNewAnimal(new Cat(name, localDate,  numberOfMiceCaught));
+                listAnimalRegistry.addNewAnimal(new Cat(name, localDate, numberOfMiceCaught));
                 break;
             case "dog":
                 System.out.println("Является ли собака охотничьей true - да, false - нет?");
@@ -85,54 +84,101 @@ public class ConsoleMenu {
                 listAnimalRegistry.addNewAnimal(new Donkey(name, localDate, isSpeaker));
                 break;
             case "camel":
-                System.out.println("Введите какой размер у хомяка:");
+                System.out.println("Введите количество горбов у верблюда:");
                 byte numberOfHumps = scanner.nextByte();
                 listAnimalRegistry.addNewAnimal(new Camel(name, localDate, numberOfHumps));
                 break;
         }
     }
-//    private void createCat() {
-//
-//    }
-//    private void createDog() {
-//
-//    }
-//    private void createHamster() {
-//
-//    }
-//
-//    private void createHorse() {
-//
-//    }
-//    private void createDonkey() {
-//
-//    }
-//    private void createCamel() {
-//
-//    }
 
+    public ListAnimalRegistry getListAnimalRegistry() {
+        return listAnimalRegistry;
+    }
 
     private LocalDate createDateBirth() {
-        System.out.println("Введите год рождения:");
-        int year = scanner.nextInt();
-        System.out.println("Введите месяц рождения:");
-        int month = scanner.nextInt();
-        System.out.println("Введите день рождения:");
-        int day = scanner.nextInt();
-        return LocalDate.of(year, month, day);
+        while (true) {
+            try {
+                System.out.println("Введите год рождения:");
+                int year = scanner.nextInt();
+                System.out.println("Введите месяц рождения:");
+                int month = scanner.nextInt();
+                System.out.println("Введите день рождения:");
+                int day = scanner.nextInt();
+                return LocalDate.of(year, month, day);
+            } catch (Exception e) {
+                System.out.println("Неверно указана дата рождения!");
+            }
+        }
     }
+
 
     private ArrayList createCommands() {
         ArrayList<String> array = new ArrayList<>();
         System.out.println("Введите через пробел команды, которыми владеет животное:");
         String commands = scanner.nextLine();
         String[] commandArray = commands.split(" ");
-        for (int i =0; i < commandArray.length; i++) {
-             array.add(commandArray[i]);
+        for (int i = 0; i < commandArray.length; i++) {
+            array.add(commandArray[i]);
         }
         return array;
     }
 
+    private Animal createForFindAnimal() {
+        System.out.println("Введите имя животного, которое должно выучить новую команду:");
+        String name = scanner.nextLine();
+        System.out.println("Введите дату рождения животного, которое должно выучить новую команду:");
+        LocalDate localDate = createDateBirth();
+        System.out.println("Введите тип животного на английском языке:");
+        String type = scanner.nextLine();
+
+        Animal animal;
+        while (true) {
+            switch (type) {
+                case "cat":
+                    animal = new Cat(name, localDate);
+                    return animal;
+                case "dog":
+                    animal = new Dog(name, localDate, true);
+                    return animal;
+                case "hamster":
+                    animal = new Hamster(name, localDate, 52);
+                    return animal;
+                case "horse":
+                    animal = new Horse(name, localDate, 50);
+                    return animal;
+                case "donkey":
+                    animal = new Donkey(name, localDate, false);
+                    return animal;
+                case "camel":
+                    animal = new Camel(name, localDate, (byte) 1);
+                    return animal;
+                default:
+                    System.out.println("Вы ввели неверный тип животного");
+                    System.out.println("Введите тип животного на английском языке:");
+                    type = scanner.nextLine();
+
+            }
+        }
+
+
+    }
+
+    private void learn() {
+        Animal animal = createForFindAnimal();
+        System.out.println("Введите новую команду:");
+        String command = scanner.nextLine();
+        for (int i = 0; i < listAnimalRegistry.getAnimalRegistry().size(); i++) {
+            if (listAnimalRegistry.getAnimalRegistry().get(i).equals(animal)) {
+                listAnimalRegistry.learnNewCommand(animal, command);
+            } else {
+                System.out.println("Такого животного нет, команда не выучена!");
+            }
+        }
+
+
+
+
+    }
 
 
     private void statistic() {
