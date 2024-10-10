@@ -45,38 +45,10 @@ public class Main {
 //
 
 
+//
 
-
-
-        ListAnimalRegistry listAnimalRegistry = new ListAnimalRegistry();
-        ArrayList commandCat = new ArrayList<>();
-        commandCat.add("Сидеть");
-        Cat cat4 = new Cat("Tom", LocalDate.of(1991, 10, 15), commandCat, 3);
-        Horse horse1 = new Horse("Iva");
-        Donkey donkey = new Donkey("Vi", LocalDate.of(2001,01,01), true);
-        Donkey donkey2 = new Donkey("Vi", LocalDate.of(2056,01,01), true);
-
-
-        listAnimalRegistry.addNewAnimal(cat4);
-        listAnimalRegistry.addNewAnimal(horse1);
-        listAnimalRegistry.addNewAnimal(donkey);
-        listAnimalRegistry.addNewAnimal(donkey2);
-//        listAnimalRegistry.learnNewCommand(cat4, "Бежать!");
-//        listAnimalRegistry.learnNewCommand(cat4, "Бежать!");
-        Collections.sort(listAnimalRegistry.getAnimalRegistry());
-        System.out.println(listAnimalRegistry.getAnimalRegistry());
-
-
-        System.out.println();
-        System.out.println("Количество животных: " + Animal.getCount());
-        System.out.println("Количество домашних животных: " + Pets.getCountPets());
-        System.out.println("Количество ездовых животных: " + PackAnimal.getCountPackAnimal());
-        System.out.println("Количество кошек: " + Cat.getCountCat());
-        System.out.println("Количество собак: " + Dog.getCountDog());
-        System.out.println("Количество хомяков: " + Hamster.getCountHamster());
-        System.out.println("Количество лошадей: " + Horse.getCountHorse());
-        System.out.println("Количество верблюдов: " + Camel.getCountCamel());
-        System.out.println("Количество ослов: " + Donkey.getCountDonkey());
+        ConsoleMenu consoleMenu = new ConsoleMenu();
+        consoleMenu.start();
 
     }
 }
