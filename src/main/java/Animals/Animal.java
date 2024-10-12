@@ -2,8 +2,6 @@ package Animals;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
 import java.util.Objects;
 
 public abstract class Animal implements Comparable <Animal> {

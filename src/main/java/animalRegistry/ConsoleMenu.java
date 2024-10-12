@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ConsoleMenu {
+
+    private final LocalDate MAX_LOCAL_DATE = LocalDate.now();
+    private final LocalDate MIN_LOCAL_DATE = LocalDate.now().minusYears(25);
     private ListAnimalRegistry listAnimalRegistry;
     Scanner scanner;
 
@@ -32,10 +35,12 @@ public class ConsoleMenu {
                 case "create donkey" -> createAnimal("donkey");
                 case "create camel" -> createAnimal("camel");
                 case "stat" -> statistic();
-                case "help" -> information();
+                case "sort" -> listAnimalRegistry.sort();
+                case "command" -> allAnimalCommand();
                 case "exit" -> isWorkingRegistr = false;
                 case "list" -> System.out.println(getListAnimalRegistry());
                 case "learn" -> learn();
+                case "count" -> System.out.println(listAnimalRegistry.getAnimalRegistry().size());
                 default -> information();
             }
         }
@@ -48,6 +53,11 @@ public class ConsoleMenu {
         System.out.println("Cоздать животное - \"create cat\" (dog, hamster, horse, donkey, camel)");
         System.out.println("Статистика по всем животным - \"stat\"");
         System.out.println("list - список всех животных");
+        System.out.println("learn - выучить новую команду");
+        System.out.println("sort - Вывести спосок животных сортированных по дате рождения");
+        System.out.println("command - посмотреть команды определенного животного");
+        System.out.println("count - количество добавленных животных в список");
+
         System.out.println("exit - выход");
     }
 
@@ -104,7 +114,12 @@ public class ConsoleMenu {
                 int month = scanner.nextInt();
                 System.out.println("Введите день рождения:");
                 int day = scanner.nextInt();
-                return LocalDate.of(year, month, day);
+                if (LocalDate.of(year, month, day).isAfter(MAX_LOCAL_DATE) ||
+                        LocalDate.of(year, month, day).isBefore(MIN_LOCAL_DATE)) {
+                    System.out.println("Неверно указана дата рождения!");
+                } else {
+                    return LocalDate.of(year, month, day);
+                }
             } catch (Exception e) {
                 System.out.println("Неверно указана дата рождения!");
             }
@@ -124,9 +139,9 @@ public class ConsoleMenu {
     }
 
     private Animal createForFindAnimal() {
-        System.out.println("Введите имя животного, которое должно выучить новую команду:");
+        System.out.println("Введите имя животного:");
         String name = scanner.nextLine();
-        System.out.println("Введите дату рождения животного, которое должно выучить новую команду:");
+        System.out.println("Введите дату рождения животного:");
         LocalDate localDate = createDateBirth();
         System.out.println("Введите тип животного на английском языке:");
         String type = scanner.nextLine();
@@ -163,6 +178,7 @@ public class ConsoleMenu {
 
     }
 
+
     private void learn() {
         Animal animal = createForFindAnimal();
         System.out.println("Введите новую команду:");
@@ -174,12 +190,18 @@ public class ConsoleMenu {
                 System.out.println("Такого животного нет, команда не выучена!");
             }
         }
-
-
-
-
     }
 
+    private void allAnimalCommand() {
+        Animal animal = createForFindAnimal();
+        for (int i = 0; i < listAnimalRegistry.getAnimalRegistry().size(); i++) {
+            if (listAnimalRegistry.getAnimalRegistry().get(i).equals(animal)) {
+                System.out.println(listAnimalRegistry.getCommansAnimal((Animal) listAnimalRegistry.getAnimalRegistry().get(i)));
+            } else {
+                System.out.println("Такого животного нет!");
+            }
+        }
+    }
 
     private void statistic() {
         System.out.println("Количество животных: " + Animal.getCount());

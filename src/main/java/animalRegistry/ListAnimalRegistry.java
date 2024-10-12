@@ -4,6 +4,7 @@ import Animals.Animal;
 import com.sun.source.tree.BreakTree;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Set;
 
 public class ListAnimalRegistry {
@@ -47,6 +48,14 @@ public class ListAnimalRegistry {
     }
 
 
+    public void sort() {
+        Collections.sort(animalRegistry);
+        System.out.println(animalRegistry);
+    }
+
+public ArrayList getCommansAnimal(Animal animal) {
+        return animal.getCommands();
+}
 
 
     @Override
